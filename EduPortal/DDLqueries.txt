@@ -1,0 +1,46 @@
+create table users_table(
+    id int not null auto_increment ,
+    name varchar(50) not null,
+    email varchar(35) not null,
+    mobile bigint(10) not null,
+    address varchar(10) not null,
+    username varchar(35) not null,
+    password varchar(35) not null,
+    designation varchar(1) default 'S',
+    primary key(id)
+);
+
+create table announcement_table(
+    id int not null auto_increment ,
+    name varchar(5) default 'Admin' ,
+    comments varchar(100),
+    date_time datetime default now(),
+    primary key(id)
+);
+
+create table comment_table(
+     id int not null,
+     c_id varchar(8) not null,
+     comments varchar(1000),
+     date_time datetime dafault now(),
+     foreign key(id) references users_table(id),
+     foreign key(c_id) references users_table(c_id)
+);
+
+create table contact_ask(
+     name varchar(20) not null,
+     email varchar(30) not null,
+     message varchar(200) not null
+);
+
+create table course_table(
+     c_id varchar(8) not null primary key,
+     c_name varchar(20) not null,
+     c_dept varchar(20),
+     instructor varchar(40)
+);
+
+##Note: Please Insert values in the tables.
+You can insert values directly running the project. (only students)
+For any Admin registration you need to do it manually in the 
+users_table with designation 'I'.
